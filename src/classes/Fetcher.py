@@ -40,17 +40,8 @@ class tools:
             url = "https://archives.nseindia.com/content/equities/EQUITY_L.csv"
             return list(pd.read_csv(url)['SYMBOL'].values)
         tickerMapping = {
-            1: "https://archives.nseindia.com/content/indices/ind_nifty50list.csv",
-            2: "https://archives.nseindia.com/content/indices/ind_niftynext50list.csv",
-            3: "https://archives.nseindia.com/content/indices/ind_nifty100list.csv",
-            4: "https://archives.nseindia.com/content/indices/ind_nifty200list.csv",
-            5: "https://archives.nseindia.com/content/indices/ind_nifty500list.csv",
-            6: "https://archives.nseindia.com/content/indices/ind_niftysmallcap50list.csv",
-            7: "https://archives.nseindia.com/content/indices/ind_niftysmallcap100list.csv",
-            8: "https://archives.nseindia.com/content/indices/ind_niftysmallcap250list.csv",
-            9: "https://archives.nseindia.com/content/indices/ind_niftymidcap50list.csv",
-            10: "https://archives.nseindia.com/content/indices/ind_niftymidcap100list.csv",
-            11: "https://archives.nseindia.com/content/indices/ind_niftymidcap150list.csv"
+            1: "https://pkgstore.datahub.io/core/nasdaq-listings/nasdaq-listed-symbols_csv/data/595a1f263719c09a8a0b4a64f17112c6/nasdaq-listed-symbols_csv.csv",
+            2: "https://dumbstockapi.com/stock?format=csv&exchanges=NYSE"
         }
 
         url = tickerMapping.get(tickerOption)
@@ -63,7 +54,7 @@ class tools:
             cr = csv.reader(res.text.strip().split('\n'))
             next(cr)  # skipping first line
             for row in cr:
-                listStockCodes.append(row[2])
+                listStockCodes.append(row[0])
         except Exception as error:
             print(error)
 
@@ -111,7 +102,7 @@ class tools:
     def fetchStockData(self, stockCode, period, duration, proxyServer, screenResultsCounter, screenCounter, totalSymbols, printCounter=False):
         with SuppressOutput(suppress_stdout=True, suppress_stderr=True):
             data = yf.download(
-                tickers=stockCode+".NS",
+                tickers=stockCode,
                 period=period,
                 interval=duration,
                 proxy=proxyServer,

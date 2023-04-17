@@ -41,7 +41,7 @@ lxml # Installed as dependency for yfinance
 msgpack # Installed as dependency for cachecontrol
 multitasking # Installed as dependency for yfinance
 packaging # Installed as dependency for pytest
-pandas # Installed as dependency for yfinance
+pandas==1.5.3 # Installed as dependency for yfinance
 pefile # Installed as dependency for pyinstaller
 pluggy # Installed as dependency for pytest
 py # Installed as dependency for pytest

@@ -75,11 +75,8 @@ def initExecution():
      E > Live Index Scan : 5 EMA for Intraday
 
      0 > Screen stocks by the stock names (NSE Stock Code)
-     1 > Nifty 50               2 > Nifty Next 50           3 > Nifty 100
-     4 > Nifty 200              5 > Nifty 500               6 > Nifty Smallcap 50
-     7 > Nifty Smallcap 100     8 > Nifty Smallcap 250      9 > Nifty Midcap 50
-    10 > Nifty Midcap 100      11 > Nifty Midcap 150       13 > Newly Listed (IPOs in last 2 Year)
-    Enter > All Stocks (default) ''' + colorText.END
+     1 > Nasdaq               2 > NYSE
+     ''' + colorText.END
           )
     try:
         tickerOption = input(
